@@ -9,8 +9,8 @@ library.
 
 ## Scheduling Tasks
 
-To schedule a task, you can use the `schedule()` method available in your `RoninConfig`
-object.  Here is a simple example:
+To schedule a task you can use the `schedule()` method available in your `RoninConfig`
+class when setting up your Ronin application.  Here is a simple example:
 
 {% highlight js %}
 	schedule( :atHour = 1, :task = \-> scrubTempDirectory() )
@@ -46,13 +46,13 @@ it would do.
 
 There are some cron-like options that are not available via the simplified arguments of
 `schedule()`.  You can pass a [raw Quartz cron string] (http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger)
-in in this case by using the `:cronString` parameter:
+if you need these more exotic options by using the `:cronString` parameter:
 
 {% highlight js %}
 	schedule( :cronString = "0 15 10 ? * 6L 2002-2005", :task = \-> doIt() )
 {% endhighlight %}
 
-Which, according to the Quartz documentation above, means "Fire at 10:15am on every last 
+According to the Quartz documentation linked to above, this means "Fire at 10:15am on every last 
 friday of every month during the years 2002, 2003, 2004 and 2005"
 
 ## Why Such An Old Version Of Quartz?
