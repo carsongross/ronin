@@ -84,6 +84,9 @@ the concrete type, not the interface type (most likely through the use of a
 type parameter on the enhancement). Consult the Gosu documentation for further
 details on enhancements.
 
+You can override this behavior by setting the `ParamConverter` property in the
+constructor of your `RoninConfig` object.
+
 ## Complex parameters
 
 Parameters of a non-primitive type and array parameters support a more
