@@ -8,8 +8,8 @@ one of the changes fails for some reason, you don't want the rest to go
 through. Consider this code:
 
 {% highlight js %}
-    var myAccount = Account.fromID(5)
-    var theirAccount = Account.fromID(7)
+    var myAccount = Account.fromId(5)
+    var theirAccount = Account.fromId(7)
     myAccount.Balance -= 5000
     theirAccount.Balance += 5000
     myAccount.update()
@@ -23,8 +23,8 @@ Fortunately, Tosa provides basic transaction semantics to avoid such a
 dilemma:
 
 {% highlight js %}
-    var myAccount = Account.fromID(5)
-    var theirAccount = Account.fromID(7)
+    var myAccount = Account.fromId(5)
+    var theirAccount = Account.fromId(7)
     myAccount.Balance -= 5000
     theirAccount.Balance += 5000
     using(db.mydb.Transaction.Lock) {

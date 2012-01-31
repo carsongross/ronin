@@ -16,23 +16,9 @@ time error checking.
 
 ## Getting started
 
-Here's what you need to get started with Ronin:
+Tosa ships as a dependency in the default Ronin application setup, so you can use it right out of the box.
 
-  * [Java][3] 6 or later.
-
-  * [Gosu][4].
-
-  * Tosa.jar - download [here][5].
-
-  * A database, such as [H2][6] or [MySQL][7].
-
-Once you've got all that, you're ready to start using Tosa.
-
-Alternatively, if you're going to use Tosa for a Ronin app, you can follow
-the setup instructions for [Ronin](Ronin.html); Tosa (plus the H2 database) will be
-installed for you.
-
-First, let's look at the [database schema guidelines](Schema-Guidelines.html).
+Let's look at the [database schema guidelines](Schema-Guidelines.html).
 
    [1]: #Why_RoninDB?
 

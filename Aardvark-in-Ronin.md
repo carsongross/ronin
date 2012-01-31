@@ -8,12 +8,15 @@ Ronin uses [Aardvark][1] for its command-line interface. Aardvark is based on An
 roninit automatically creates a build.vark file for your project. By default it is empty, except for a classpath statement and some comments:
 
 {% highlight js %}
-  classpath "./support"
+
+  classpath "remote:snapshots:gosu-lang.org-snapshots:http://gosu-lang.org/repositories/m2/snapshots"
+  classpath "org.gosu-lang.ronin:ronin-init:0.9.1-SNAPSHOT"
 
   /* This vark file is used to develop your ronin application.  Ronin provies
      some default targets that can be used even though this file is empty.
-  
+
      run 'vark -p' to see all the targets avaiable*/
+
 {% endhighlight %}
 
 You can add any vark targets you like to this file. Consult [http://vark.github.com][1] for more information.

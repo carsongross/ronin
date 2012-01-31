@@ -1,0 +1,63 @@
+<html>
+  <head>
+	  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" type="text/css">
+	  <style>
+		p {
+			font-size:1.3em;
+			line-height:130%;
+		}
+		li {
+			font-size:1.3em;
+			padding:4px;
+		}
+	  </style>
+	</head>
+	<body>
+		<div class="container">
+			<section id="why">
+			  <div class="page-header">
+					<h1>Why Ronin?</h1>
+				</div>
+				<p>Imagine you're developing a web application with a typical web framework. You've noticed a bug on some page of your app... how do you fix it? Maybe you'll look for some distinctive text on the page, then search for that text in your project using your favorite IDE. Say the text turns up a template which was used to generate the page.</p>
+				<p>Now you have to track down the data that was used to render the template, which means you need to find the code that retrieved the data, and maybe an XML configuration file which specifies how that data was mapped to an identifier used in the template. If you're not intimately familiar with the inner workings of the app, and of the framework you're using, you've got a lot of searching to do.</p>
+				<p>With Ronin, everything is out in the open - there's no reflective magic or arcane XML files. The URL in your browser tells you which method on which class was called to generate the current page. That method contains a call to render the template for the page, and an explicit set of parameters providing the data for the template. If you're using IntelliJ, you can navigate between all these different pieces with a single click.</p>
+				<p>And best of all, should you make a mistake - misspell a file name, or leave out a parameter - there will be a compilation error, so you'll know right away instead of having to exhaustively walk through your app (or maintain 100% unit test coverage).</p>
+		  </section>
+			<section id="getting_started">
+			  <div class="page-header">
+					<h1>Getting Started</h1>
+				</div>
+				<p>Here's what you need to get started with Ronin:</p>
+				<ul>
+					<li>Java 6 or later.</li>
+				  <li><a href="https://github.com/vark/Aardvark/downloads">Aardvark</a>, a build system for Gosu. Version 0.4</li>
+				</ul>
+				<p>With aardvark on your path, you can run the remote Ronin installation script:</p>
+
+				<pre>
+  $ vark -f http://ronin-web.org/init.vark init -name <em>my_app</em></pre>
+				
+				<p>Where <em>my_app</em> is whatever name you would like for your Ronin application.  You will see output like this:</p>
+				<pre>
+Buildfile: /private/var/folders/yy/1h6qk8t52rjczystgf79s5nm0000gn/T/build6584956297061779085.vark
+Done parsing Aardvark buildfile in 1839 ms
+
+init:
+      [get] Getting: http://ronin-web.org/ronin-template.zip
+      [get] To: /var/folders/yy/1h6qk8t52/T/ronin-template8153128738706862212zip
+    [unzip] Expanding: /var/folders/yy/1h6qk8t52/T/ronin-template8153128738706862212zip into ./my_app
+     [echo] Created a new ronin application at ./my_app.
+     [echo]   To start your ronin app, cd my_app; vark server
+
+BUILD SUCCESSFUL
+Total time: 0 seconds</pre>
+
+        <p>Following the scripts instructions, you can change into the applications main directory and start up the built in webserver (Jetty):</p>
+        
+        <p>TODO: console + screen shot</p>
+
+
+		  </section>
+	  </div>
+	</body>
+</html>

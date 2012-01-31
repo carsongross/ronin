@@ -3,38 +3,11 @@ title: Your First Ronin App
 layout: default
 ---
 
-Make sure you've [downloaded everything you need](Ronin.html).
+Make sure you've [downloaded everything you need](Ronin.html).  Run the following vark script from the command line:
 
-After you unzip ronin.zip or ronin.tgz, you should be able to run:
+`vark -f http://ronin-web.org/init.vark init -name my_app`
 
-`roninit init my_app_name` (OS X or Linux)
-`roninit.cmd init my_app_name` (Windows)
-
-On OS X or Linux, you may need to run `chmod +x roninit` to make the `roninit` script executable.
-
-You should see output like this:
-
-    [tmp]$ ./roninit init my_app
-      Creating /private/tmp/my_app/build.vark
-      Creating /private/tmp/my_app/env/mode/dev/db/model.dbc
-      Creating /private/tmp/my_app/env/mode/prod/db/model.dbc
-      Creating /private/tmp/my_app/env/mode/staging/db/model.dbc
-      Creating /private/tmp/my_app/env/mode/test/db/model.dbc
-      Creating /private/tmp/my_app/html/WEB-INF/web.xml
-      Creating /private/tmp/my_app/html/public/styles.css
-      Creating /private/tmp/my_app/ivy-settings.xml
-      Creating /private/tmp/my_app/ivy.xml
-      Creating /private/tmp/my_app/src/config/RoninConfig.gs
-      Creating /private/tmp/my_app/src/controller/Main.gs
-      Creating /private/tmp/my_app/src/db/model.ddl
-      Creating /private/tmp/my_app/src/view/Main.gst
-      Creating /private/tmp/my_app/support/vark/RoninVarkTargets.gsx
-      Creating /private/tmp/my_app/test/controller/MainTestV3.gs
-      Creating /private/tmp/my_app/test/controller/MainTestV4.gs
-    A ronin application was created at my_app.  To start the application:
-    
-      cd my_app 
-      vark server
+Replace `my_app` with whatever name you would like your application to have.  This will create a ronin application in the `my_app` directory.
 
 Now you should be able to start up your server by switching into the `my_app`
 directory and running the `server` target with Aardvark:
@@ -43,11 +16,6 @@ directory and running the `server` target with Aardvark:
     [my_app]$ vark server
     Buildfile: /private/tmp/my_app/build.vark
     [19:58:38] Done parsing Aardvark buildfile in 998 ms
-    
-    deps:
-    
-    [configure] :: Ivy 2.2.0 - 20100923230623 :: http://ant.apache.org/ivy/ ::
-    [configure] :: loading settings :: file = /private/tmp/my_app/ivy-settings.xml
     
     server:
     Starting server in socket debug mode at 8088
@@ -67,7 +35,7 @@ directory and running the `server` target with Aardvark:
          [java] Your Ronin App is listening at http://localhost:8080
          [java] 
 
-(The first time you run `vark server`, it may download some third-party dependencies, which may take a few minutes.)
+(The first time you run `vark server`, it will download some third-party dependencies, which may take a few minutes.)
 
 You now have a Ronin application running at `http://localhost:8080`, hosted on
 a Jetty webserver/H2 database combination.
@@ -184,15 +152,13 @@ Congratulations! You've completed your first Ronin application.
 
 Your ronin application is laid out like so:
 
+      /pom.xml - A Maven-style POM for managing dependencies (Maven is not necessary)
       /build.vark - The Aardvark file for your project
-      /src - Where all gosu source code will go
-          /controller - Where your controllers will go
+      /src - Where all source code goes
+          /controller - Where your controllers go
           /config/RoninConfig.gs - Allows you to programmatically configure your Ronin app on startup
-          /view - Where your view templates will go
+          /view - Where your view templates go
           /db - .ddl file(s) containing schema information for your database(s)
-      /env - environment-specific classpath resources, including database connection info (see [Server environments](Environments.html))
-      /support - Contains non-core support files
-      /lib - Contains core support files (e.g. ronin.jar and any other libraries you might want)
       /test - Contains your test source
       /html - The root of the Ronin applications war file
         /WEB-INF/web.xml - A thin web.xml file that will get your Ronin application bootstrapped in a servlet container

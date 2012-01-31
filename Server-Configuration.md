@@ -3,15 +3,12 @@ title: Server Configuration
 layout: default
 ---
 
-Configuration of a Ronin server is done by creating a class in the `config`
-package named `RoninConfig`. Ronin finds this class reflectively at startup if
-it exists. This class must implement `IRoninConfig`; more commonly, you will
-want to subclass `DefaultRoninConfig`, which provides standard implementations
-of the methods on `IRoninConfig`.
+Configuration of a Ronin server is done via the `config.RoninConfig` class,
+automatically generated for you by the init script.  Ronin finds this class 
+reflectively at startup.
 
-Most common configuration should be performed by overriding
-`DefaultRoninConfig`'s constructor, calling `super()`, and then setting the
-following properties:
+Configuration is done in the constructor for `RoninConfig`.  Some common
+configuration points are:
 
   * The **default action** is set via the `DefaultAction` property, and
 defaults to "index". This is the name of the controller method that Ronin

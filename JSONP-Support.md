@@ -26,4 +26,4 @@ will respond with
     myCallback({"foo": "bar"})
 {% endhighlight %}
 
-   [2]: http://en.wikipedia.org/wiki/JSON#JSONP
+   [2]: http://en.wikipedia.org/wiki/JSONP

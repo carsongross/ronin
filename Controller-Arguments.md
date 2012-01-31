@@ -41,7 +41,7 @@ will call
 {% endhighlight %}
 
 If a parameter is of some other type, Ronin will attempt to find a static
-method on that type called `fromID` which takes a single parameter and returns
+method on that type called `fromId` which takes a single parameter and returns
 an instance of the desired type. (In this documentation we will refer to such
 types as **entity** types, though they can be any Gosu type.) If it finds such
 a method, it will call it, passing in the value from the request, and assign
@@ -51,7 +51,7 @@ For instance, given the following class:
 
 {% highlight js %}
     class Person {
-      static function fromID(id : long) : Person {
+      static function fromId(id : long) : Person {
         return fetchPersonFromDb(id)
       }
     ...
@@ -76,10 +76,10 @@ will call
     controller.Main.viewPerson(Person.fromId(5))
 {% endhighlight %}
 
-Don't forget that you can use a Gosu enhancement to add `fromID()` to an
+Don't forget that you can use a Gosu enhancement to add `fromId()` to an
 existing type, such as a Hibernate class, thus turning it into a valid Ronin
 entity type. You could even enhance a single interface implemented by all of
-your entity types, though be careful to ensure that `fromID()` always returns
+your entity types, though be careful to ensure that `fromId()` always returns
 the concrete type, not the interface type (most likely through the use of a
 type parameter on the enhancement). Consult the Gosu documentation for further
 details on enhancements.
@@ -105,7 +105,7 @@ where Person is a Gosu class defining the following property:
 {% endhighlight %}
 
 the URL "`http://localhost:8080/Main/updatePerson?p=0&p.Name=Bob`" will call
-`Person.fromID(0)`, then set the `Name` property on that instance of `Person`
+`Person.fromId(0)`, then set the `Name` property on that instance of `Person`
 to "Bob".
 
 If a property is specified in the URL, but no ID is given for the instance -
@@ -116,7 +116,7 @@ defines a constructor with no arguments.)
 For array parameters, an array is created automatically. Elements in the array
 are specified in the URL using standard array notation, e.g.
 "`names[0]=Bob&names[1]=Fred`". If the parameter is an array of entity types,
-each value specified in this way is passed to `fromID()` to retrieve the
+each value specified in this way is passed to `fromId()` to retrieve the
 appropriate element.
 
 Complex parameters make it very easy to create an HTML form for creating or

@@ -3,24 +3,33 @@ title: Connecting to a Database
 layout: default
 ---
 
-Connecting Tosa to a database is easy: simply place a text file with the
-extension ".dbc" somewhere in your Gosu classpath. The contents of the file
-should be a single JDBC URL. For example, if you have an H2 database called
-"test.db", the contents of your .dbc file should be
+To connect to a database, you need to tell Tosa what JDBC connection string to use.
+In Ronin, this is done in `config.RoninConfig`:
 
-`jdbc:h2:test.db;USER=sa;PASSWORD=`
+    if(m == DEVELOPMENT) {
+      AdminConsole.start()
+      db.model.Database.JdbcUrl = "jdbc:h2:file:runtime/h2/devdb"
+    } else if( m == TESTING ) {
+      db.model.Database.JdbcUrl = "jdbc:h2:file:runtime/h2/testdb"
+    } else if( m == STAGING ) {
+      db.model.Database.JdbcUrl = "jdbc:h2:file:runtime/h2/stagingdb"
+    } else if( m == PRODUCTION ) {
+      db.model.Database.JdbcUrl = "jdbc:h2:file:runtime/h2/proddb"
+    }
 
 (Modify the username and password as appropriate.) Note that relative URLs are
 resolved relative to where you launch Gosu from, not relative to the .dbc file
-itself.
+itself.  Also note that different database strings are used depending on the mode
+of the application, which is a common pattern.
 
-Next, create a file with the extension ".ddl" alongside your .dbc file.  This file
-contains the database schema in standard [DDL][1] format.
+Next, create a file with the extension ".ddl" in your source code.  This file
+contains the database schema in standard [DDL][1] format.  In Ronin, this will
+go in the `db` package, by convention.
 
 That's it! You can now access the types in your
 database. The package in which those types live is determined by the location
-of the .dbc file in your classpath, plus the name of the .dbc file. So if your
-file is named "test.dbc", and it's in a folder called "db", the types will be
+of the .ddl file in your classpath, plus the name of the .ddl file. So if your
+file is named "test.ddl", and it's in a folder called "db", the types will be
 in a package called `db.test`.
 
 Note: if you're using either H2 or MySQL, Tosa will automatically

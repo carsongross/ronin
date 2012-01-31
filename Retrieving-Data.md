@@ -5,22 +5,22 @@ layout: default
 
 Tosa provides several ways to retrieve an entity from the database.
 
-The static `fromID()` method on an entity type retrieves the entity of that
+The static `fromId()` method on an entity type retrieves the entity of that
 type where the value in the "`id`" column matches the argument. (Assuming
 you've set the "`id`" column as a primary key, this is typically the fastest
 way to retrieve an entity.) For example,
 
 {% highlight js %}
-    Person.fromID(5)
+    Person.fromId(5)
 {% endhighlight %}
 
 returns the `Person` whose "`id`" is "5".
 
-The static `find()` method on an entity type retrieves all entities of that
+The static `selectLike()` method on an entity type retrieves all entities of that
 type matching the "template" entity passed in as an argument. For example,
 
 {% highlight js %}
-    Person.find(new Person() {:Name="Bob"})
+    Person.selectLike({:Name="Bob"})
 {% endhighlight %}
 
 returns all `Person` objects whose `Name` is "Bob". Note that any properties
@@ -59,17 +59,18 @@ methods.
     Person.findSortedPaged(new Person() {:Name="Bob"}, Person#PhoneNumber, true, 10, 2)
 {% endhighlight %}
 
-The static `findWithSql()` method on an entity type runs the given SQL select
+The static `select()` method on an entity type runs the given SQL select
 command, and returns the corresponding objects. This is the method to use for
-more complex queries than those supported by the above methods. Note that the
-select command must be "select `*`", or the objects returned will not have
-their properties correctly initialized.
+more complex queries than those supported by the above methods.  The string
+passed in will be passed through as a where clause.  You can declare variables
+in the string using a colon prefix, and set the values of the variables with
+a map:
 
 {% highlight js %}
-    Person.findWithSql("select * from Person where Name is not null and PhoneNumber like '555%'")
+    Person.select("Name is not null and PhoneNumber like :number", {"number" -> "%555"})
 {% endhighlight %}
 
-The static `count()` and `countWithSql()` methods on an entity type work
+The static `count()` and `countLike()` methods on an entity type work
 similarly to their counterparts above, but instead of returning a list of
 entity objects, they return an integer representing the number of entities
 that match the given criteria. (This is typically much faster than actually

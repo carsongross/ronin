@@ -3,8 +3,8 @@ title: Using Ronin and Tosa Together
 layout: default
 ---
 
-As you may have noticed, each Tosa entity type defines `fromID()` and
-`toID()` methods, which means that they are also valid Ronin entity types.
+As you may have noticed, each Tosa entity type defines `fromId()` and
+`toId()` methods, which means that they are also valid Ronin entity types.
 Using Tosa entities in a Ronin app therefore requires no extra effort on
 your part. For example, if you have a Tosa type called `db.mydb.Person`,
 you can define a Ronin controller like:

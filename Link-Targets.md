@@ -31,8 +31,8 @@ invocation, and `addComment()` will **not** be called by this code. Instead,
 (assuming the post's ID is 5).
 
 In order for entity types to work with these methods, they must define a
-method called `toID()` which takes no arguments and returns a unique
+method called `toId()` which takes no arguments and returns a unique
 identifier for the object on which it is called. (This identifier, when passed
-to the type's `fromID()` method, should return the original object.)
+to the type's `fromId()` method, should return the original object.)
 
 Next, we'll go over some [general tips and tricks](Tips-and-Tricks.html) for writing Ronin apps.

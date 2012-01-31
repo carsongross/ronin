@@ -31,7 +31,7 @@ instead of constructing a new instance, you retrieve it using one of the
 [query methods][3] available on the entity type:
 
 {% highlight js %}
-    var p = Person.fromID(5)
+    var p = Person.fromId(5)
     p.Name = "Fred"
     p.update()
 {% endhighlight %}
@@ -42,7 +42,7 @@ You can delete an entity from the database entirely by calling its delete()
 method:
 
 {% highlight js %}
-    var p = Person.fromID(5)
+    var p = Person.fromId(5)
     p.delete()
 {% endhighlight %}
 

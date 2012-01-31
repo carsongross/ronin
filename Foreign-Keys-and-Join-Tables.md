@@ -31,8 +31,8 @@ The `List` objects returned by join table properties can be modified in order
 to update the join table. For example:
 
 {% highlight js %}
-    var bob = Person.fromID(5)
-    var fred = Person.fromID(7)
+    var bob = Person.fromId(5)
+    var fred = Person.fromId(7)
     bob.Relatives.add(fred)
 {% endhighlight %}
 
